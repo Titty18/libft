@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: conde-an <conde-an@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/13 10:03:48 by conde-an          #+#    #+#             */
-/*   Updated: 2023/09/05 17:27:26 by conde-an         ###   ########.fr       */
+/*   Created: 2023/09/05 15:56:49 by conde-an          #+#    #+#             */
+/*   Updated: 2023/09/05 15:59:57 by conde-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*The strlen() function in C takes a string str as a parameter. 
-
-Return Value of strlen() 
-
-Return Type: int 
-
-The strlen() function in C returns an integer value, excluding the null character, which represents the length of the input string.*/
-
-
 #include "libft.h"
-#include <stdio.h> 
-#include <ctype.h>
-#include <string.h>
+#include <stdio.h>
+#include <stdlib.h> 
 
-size_t	ft_strlen(const char *s)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
+	char	*a;
+	int		j;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	j = 0;
+	if (!s)
+		return (NULL);
+	if (ft_strlen(s) - start < len)
+		len = ft_strlen(s) - start;
+	if (start >= ft_strlen(s))
+		len = 0;
+	a = malloc(sizeof(char) * (len + 1));
+	if (!a)
+		return (NULL);
+	while (len > 0)
+	{
+		a[j] = ((char *)s)[start + j];
+		j++;
+		len--;
+	}
+	a[j] = '\0';
+	return (a);
 }

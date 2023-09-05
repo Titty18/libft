@@ -6,7 +6,7 @@
 #    By: conde-an <conde-an@student.42abudhabi.a    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 22:20:55 by conde-an          #+#    #+#              #
-#    Updated: 2023/08/14 08:03:19 by conde-an         ###   ########.fr        #
+#    Updated: 2023/09/05 19:09:16 by conde-an         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,6 @@ ft_putchar_fd.c \
 ft_striteri.c \
 ft_strmapi.c \
 ft_substr.c \
-ft_strjoin.c \
 ft_strtrim.c \
 ft_split.c \
 ft_strtrim.c \

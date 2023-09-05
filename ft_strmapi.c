@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: conde-an <conde-an@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/13 10:03:48 by conde-an          #+#    #+#             */
-/*   Updated: 2023/09/05 17:27:26 by conde-an         ###   ########.fr       */
+/*   Created: 2023/09/05 17:58:47 by conde-an          #+#    #+#             */
+/*   Updated: 2023/09/05 18:00:41 by conde-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*The strlen() function in C takes a string str as a parameter. 
-
-Return Value of strlen() 
-
-Return Type: int 
-
-The strlen() function in C returns an integer value, excluding the null character, which represents the length of the input string.*/
-
 
 #include "libft.h"
-#include <stdio.h> 
-#include <ctype.h>
-#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-size_t	ft_strlen(const char *s)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	i;
+	unsigned int	i;
+	char			*space;
+	size_t			len;
 
 	i = 0;
-	while (s[i] != '\0')
+	len = ft_strlen(&s[i]);
+	space = (char *)malloc(sizeof(char) * (len + 1));
+	if (!space)
+		return (NULL);
+	while (s[i])
+	{
+		space[i] = f(i, s[i]);
 		i++;
-	return (i);
+	}
+	space[i] = '\0';
+	return (space);
 }

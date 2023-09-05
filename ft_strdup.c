@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: conde-an <conde-an@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/13 10:03:48 by conde-an          #+#    #+#             */
-/*   Updated: 2023/09/05 17:27:26 by conde-an         ###   ########.fr       */
+/*   Created: 2023/09/05 15:35:33 by conde-an          #+#    #+#             */
+/*   Updated: 2023/09/05 15:45:47 by conde-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*The strlen() function in C takes a string str as a parameter. 
-
-Return Value of strlen() 
-
-Return Type: int 
-
-The strlen() function in C returns an integer value, excluding the null character, which represents the length of the input string.*/
-
-
 #include "libft.h"
-#include <stdio.h> 
-#include <ctype.h>
-#include <string.h>
+#include <stdio.h>
+#include <stdlib.h> 
+#include <string.h> 
 
-size_t	ft_strlen(const char *s)
+char	*ft_strdup(const char *s1)
 {
+	char	*s2;
 	size_t	i;
+	size_t	tot;
 
+	tot = ft_strlen((char *)s1);
+	s2 = malloc(sizeof(char) * (tot + 1));
+	if (tot == '\0')
+		return (NULL);
 	i = 0;
-	while (s[i] != '\0')
+	while (tot > 0)
+	{
+		s2[i] = s1[i];
 		i++;
-	return (i);
+		tot--;
+	}
+	s2[i] = '\0';
+	return (s2);
 }

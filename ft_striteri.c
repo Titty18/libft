@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: conde-an <conde-an@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/13 10:03:48 by conde-an          #+#    #+#             */
-/*   Updated: 2023/09/05 17:27:26 by conde-an         ###   ########.fr       */
+/*   Created: 2023/09/05 18:01:30 by conde-an          #+#    #+#             */
+/*   Updated: 2023/09/05 18:02:58 by conde-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*The strlen() function in C takes a string str as a parameter. 
-
-Return Value of strlen() 
-
-Return Type: int 
-
-The strlen() function in C returns an integer value, excluding the null character, which represents the length of the input string.*/
 
 
 #include "libft.h"
-#include <stdio.h> 
-#include <ctype.h>
-#include <string.h>
+#include <stdio.h>
 
-size_t	ft_strlen(const char *s)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	size_t	i;
+	unsigned int	i;
 
+	if (!s || !f)
+		return ;
 	i = 0;
-	while (s[i] != '\0')
+	while (s[i])
+	{
+		f(i, &s[i]);
 		i++;
-	return (i);
+	}
 }

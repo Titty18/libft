@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: conde-an <conde-an@student.42abudhabi.a    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/13 10:03:48 by conde-an          #+#    #+#             */
-/*   Updated: 2023/09/05 17:27:26 by conde-an         ###   ########.fr       */
+/*   Created: 2023/09/05 16:02:13 by conde-an          #+#    #+#             */
+/*   Updated: 2023/09/05 16:40:48 by conde-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*The strlen() function in C takes a string str as a parameter. 
-
-Return Value of strlen() 
-
-Return Type: int 
-
-The strlen() function in C returns an integer value, excluding the null character, which represents the length of the input string.*/
-
-
 #include "libft.h"
-#include <stdio.h> 
-#include <ctype.h>
-#include <string.h>
+#include <stdlib.h>
 
-size_t	ft_strlen(const char *s)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
+	size_t	ss1;
+	size_t	ss2;
+	char	*dest;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	ss1 = ft_strlen(s1);
+	ss2 = ft_strlen(s2);
+	dest = (char *)malloc(ss1 + ss2 + 1);
+	if (dest == NULL)
+		return (NULL);
+	ft_strlcpy(dest, s1, ss1 + 1);
+	ft_strlcat(dest, s2, ss1 + ss2 + 1);
+	return (dest);
 }
